@@ -109,15 +109,15 @@ The application consists of 3 layers:
       and one for SunSpec (`SunspecDetector`). PV inverters are found by sending Solar API/
       Modbus requests out to all IP addresses in the network (the maximum number of IP addresses is
       limited). IP addresses where a PV inverter has already been detected take priority. This is
-      a tedious procedure which causes a lot of network travel. However, it is necessary for auto
+      a tedious procedure which causes a lot of network traffic. However, it is necessary for auto
       detection, because the inverters do not support any protocol for efficient detection (like
-      upnp).
+      uPnP).
     - `InverterMediator` Each mediator represents a PV inverter found while the service is running.
       If a inverter is detected by a `InverterGateway`, the mediator will know whether the detected
       inverter is the one he represents. It is reponsible for creating and removing `Inverter`
       objects which publishes the inverter data on the D-Bus, and for starting/stopping
       communication with the inverters.
-    - `DBusFronius` Ties everything together. It creates 2 inverter `InverteGateway` objects for
+    - `DBusFronius` Ties everything together. It creates 2 inverter `InverterGateway` objects for
       device detection. If a device is found, it will create an `InverterMediator` if there is no
       mediator yet which represents the inverter. `DBusFronius` will also publish the
       `com.victronenergy.fronius` service.
